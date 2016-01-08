@@ -4,26 +4,56 @@
 <head>
 	<title>FLAPPER NEWS</title>
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<style> .glyphicon-thumbs-up { cursor:pointer } </style>
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.red-deep_orange.min.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<style> .glyphicon-thumbs-up { cursor:pointer } </style>
 </head>
 
-<body ng-app="flapperNews" class="container">
+<body ng-app="flapperNews">
 
-	<nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
-    	<ul class="nav navbar-nav">
-      		<li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
-      		<li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
-      		<li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
-      		<li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
-    	</ul>
-  	</nav>
+  	<!-- Always shows a header, even in smaller screens. -->
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	  <header class="mdl-layout__header" ng-controller="NavCtrl">
+	    <div class="mdl-layout__header-row">
+	      <!-- Title -->
+	      <span class="mdl-layout-title">Flapper News</span>
+	      <!-- Add spacer, to align navigation to the right -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Navigation. We hide it in small screens. -->
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	      	<a class="mdl-navigation__link" href="#/home">Home</a>
+	        <a ng-show="isLoggedIn()" class="mdl-navigation__link" href="">{{ currentUser() }}</a>
+	        <a ng-show="isLoggedIn()" class="mdl-navigation__link" href="" ng-click="logOut()">Log Out</a>
+	        <a ng-hide="isLoggedIn()" class="mdl-navigation__link" href="/#/login">Log In</a>
+	        <a ng-hide="isLoggedIn()" class="mdl-navigation__link" href="/#/register">Register</a>
+	      </nav>
+	    </div>
+	  </header>
+	  <div class="mdl-layout__drawer" ng-controller="NavCtrl">
+	    <span class="mdl-layout-title">Flapper News</span>
+	    <nav class="mdl-navigation">
+	    	<a class="mdl-navigation__link" href="#/home">Home</a>
+	      <a ng-show="isLoggedIn()" class="mdl-navigation__link" href="">{{ currentUser() }}</a>
+	      <a ng-show="isLoggedIn()" class="mdl-navigation__link" href="" ng-click="logOut()">Log Out</a>
+	      <a ng-hide="isLoggedIn()" class="mdl-navigation__link" href="/#/login">Log In</a>
+	      <a ng-hide="isLoggedIn()" class="mdl-navigation__link" href="/#/register">Register</a>
+	    </nav>
+	  </div>
+	  <main class="mdl-layout__content">
+	    <div class="page-content">
+	    	<!-- Your content goes here -->
 
-	<div class="row">
+	    	<div >
+				<div>
+					<ui-view></ui-view>	
+				</div>
+			</div>
 
-		<div class="col-xs-6 col-xs-offset-3">
-			<ui-view></ui-view>	
-		</div>
 
+	    </div>
+	  </main>
 	</div>
 	
 	<script src="/javascripts/angular.min.js"></script>
@@ -32,5 +62,6 @@
 	<script type="text/javascript" src="/javascripts/controllers/controllers.js"></script>
 	<script type="text/javascript" src="/javascripts/factory/factory.js"></script>
 	<script type="text/javascript" src="/javascripts/config/config.js"></script>
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
 </body>
 </html>

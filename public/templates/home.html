@@ -1,10 +1,10 @@
 	<!-- header -->
-  	<div class="page-header">
+<!--   	<div class="page-header">
   	  <h1>Flapper News</h1>
   	</div>
-	
+	 -->
 	<!-- posts -->
-	<div ng-repeat="post in posts | orderBy: '-upvotes'">
+<!-- 	<div ng-repeat="post in posts | orderBy: '-upvotes'">
 		<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
 		{{post.upvotes}}
 		<span style="font-size:20px; margin-left:10px;">
@@ -21,6 +21,26 @@
 		<span ng-show="post.author">
 			posted by <a>{{post.author}}</a> |
 		</span>
+	</div> -->
+
+	<div class="row">
+		<div ng-repeat="post in posts | orderBy: '-upvotes'">
+			<div class="col-md-5 card">
+				<h4>
+					<a ng-show="post.link" href="{{post.link}}">
+						{{post.title}}
+					</a>
+					<span ng-hide="post.link">
+						{{post.title}}
+					</span>
+				</h4>
+				<p>
+					{{lipsum}}
+				</p><hr>
+				<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+				<span class="pull-right"><a href="#/posts/{{post._id}}"><h4 class="more">more..</h4></a></span>
+			</div>
+		</div>
 	</div>
 
 	<div ng-hide="isLoggedIn()">

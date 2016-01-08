@@ -3,7 +3,7 @@
 	var app = angular.module( 'factory' , []);
 
 		//service-factory
-	app.factory('posts', ['$http','auth', function($http,auth) {
+	app.factory('posts', ['$http','auth', function($http, auth) {
 		var o = {
 			posts: []
 		};

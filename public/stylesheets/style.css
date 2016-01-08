@@ -1,8 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.card{
+	box-shadow: 2px 2px 7px #888888;
+	margin: 20px 0px 0px 70px;
 }
 
-a {
-  color: #00B7FF;
+.glyphicon{
+	font-size: 3em;
+	color: coral;
+}
+
+.more{
+	display: inline;
 }
