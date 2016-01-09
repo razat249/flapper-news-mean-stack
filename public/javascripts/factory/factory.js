@@ -30,6 +30,14 @@
 				});
 		};
 
+		o.downvote = function(post) {
+			return $http.put('/posts/' + post._id + '/downvote', null, {
+				headers: {Authorization: 'Bearer ' + auth.getToken()}
+			}).success(function(data){
+					post.downvotes++;
+				});
+		}
+
 		o.get = function(id){
 			return $http.get('/posts/'+id).then(function(res){
 				return res.data

@@ -12,7 +12,8 @@
 			if(!$scope.title || $scope.title === '') {return;}
 			posts.create({
 				title: $scope.title,
-				link: $scope.link
+				link: $scope.link,
+				body: $scope.body
 			});
 			$scope.title = '';
 			$scope.link = '';
@@ -20,6 +21,10 @@
 
 		$scope.incrementUpvotes = function(post) {
 			posts.upvote(post);
+		};
+
+		$scope.incrementDownvotes = function(post) {
+			posts.downvote(post);
 		};
 
 	}]);

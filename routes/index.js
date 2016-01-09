@@ -68,6 +68,15 @@ router.put('/posts/:post/upvote', auth, function(req, res, next) {
 	});
 });
 
+//REST-route for downvoting a post
+router.put('/posts/:post/downvote', auth, function(req, res, next) {
+  req.post.downvote(function(err, post){
+    if (err) { return next(err); }
+
+    res.json(post);
+  });
+});
+
 //REST-route for retriving comments in a post
 router.get('/posts/:post/comments', function(req, res, next) {
   Comment.find(function(err, comments){
